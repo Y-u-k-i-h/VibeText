@@ -21,8 +21,6 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -76,6 +74,9 @@ public final class EditorFrame extends JFrame {
 
         setJMenuBar(buildMenuBar(controller));
         pack();
+        // Clear the fixed preferred size so the panel stretches freely
+        // when the window is resized by the user or tiling compositor.
+        editorPanel.setPreferredSize(null);
         setLocationRelativeTo(null);
     }
 
