@@ -17,6 +17,8 @@ public final class Main {
     }
 
     public static void main(String[] args) {
+        configureToolkit();
+
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -33,5 +35,19 @@ public final class Main {
             // Flush the graphics pipeline to the display server.
             Toolkit.getDefaultToolkit().sync();
         });
+    }
+
+    /**
+     * Selects the best AWT toolkit for the current environment.
+     * On Wayland (Java 25+) requests native WLToolkit for direct
+     * compositor rendering. Falls back to default (XToolkit / macOS / Win32)
+     * when Wayland is unavailable. Must run before any AWT class loads.
+     */
+    private static void configureToolkit() {
+        String waylandDisplay = System.getenv("WAYLAND_DISPLAY");
+        int javaVersion = Runtime.version().feature();
+        if (waylandDisplay != null && !waylandDisplay.isEmpty() && javaVersion >= 25) {
+            System.setProperty("awt.toolkit.name", "WLToolkit");
+        }
     }
 }

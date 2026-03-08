@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# Build and run VibeText directly (bypasses Gradle's forked JVM)
+# Build and run VibeText using Gradle (respects the Java 25 toolchain)
 set -e
 cd "$(dirname "$0")"
-
-./gradlew classes -q --no-daemon 2>/dev/null
-exec java -cp build/classes/java/main com.vibeText.Main "$@"
+exec ./gradlew run "$@"
