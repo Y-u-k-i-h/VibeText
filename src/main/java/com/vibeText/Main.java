@@ -31,7 +31,6 @@ public final class Main {
             EditorFrame frame = new EditorFrame(AppConfig.APP_NAME, controller);
             controller.bind(frame);
             frame.setVisible(true);
-            frame.textArea().requestFocusInWindow();
             // Flush the graphics pipeline to the display server.
             Toolkit.getDefaultToolkit().sync();
         });
