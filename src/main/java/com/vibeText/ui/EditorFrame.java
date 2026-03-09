@@ -74,9 +74,10 @@ public final class EditorFrame extends JFrame {
 
         setJMenuBar(buildMenuBar(controller));
         pack();
-        // Clear the fixed preferred size so the panel stretches freely
-        // when the window is resized by the user or tiling compositor.
+        // Now clear the fixed preferred size so the editor panel fills
+        // whatever size the window manager / user gives us on resize.
         editorPanel.setPreferredSize(null);
+        setMinimumSize(getSize());
         setLocationRelativeTo(null);
     }
 
