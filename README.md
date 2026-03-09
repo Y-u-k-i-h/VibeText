@@ -1,5 +1,7 @@
 # VibeText ✨
 
+# VibeText ✨
+
 **A completely vibe-coded text editor, built entirely through AI-assisted development.**
 
 Every single line of code in this project — from the piece-table core to the Swing UI to the Gradle build config — was generated through conversational prompts with an AI coding assistant. No boilerplate was hand-written, no Stack Overflow was consulted. Just vibes.
